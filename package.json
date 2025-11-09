@@ -18,10 +18,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@total-typescript/tsconfig": "^1.0.4",
     "@types/react": "19.0.7",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.1",
-    "@biomejs/biome": "1.9.4"
+    "typescript": "^5.9.3"
   },
   "lint-staged": {
     "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": ["npx biome check --write ."]

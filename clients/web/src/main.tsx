@@ -1,9 +1,11 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "ui/src/styles/global.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider, createBrowserRouter } from "react-router";
-import { App } from "./App.tsx";
+import { App } from "./App";
+
+import "./i18n/config";
+import "@astus/design-system/src/styles/global.css";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -23,7 +25,13 @@ const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    children: [
+      { index: true, element: <App /> },
+      {
+        path: "example",
+        element: <h1>Example Page</h1>,
+      },
+    ],
   },
 ]);
 

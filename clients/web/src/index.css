@@ -1,2 +1,0 @@
-/* Import CSS from design-system package. This is also required for tailwind CSS to work */
-@source "../../../packages/ui/src/styles/global.css";

@@ -9,7 +9,8 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "./src"),
-			"@ui": path.resolve(__dirname, "../../packages/ui/src"),
+			"@design-system": path.resolve(__dirname, "./node_modules/@astus/design-system/src"),
+			"@shared": path.resolve(__dirname, "../../packages/shared/src"),
 		},
 	},
 });

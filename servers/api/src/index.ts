@@ -1,4 +1,3 @@
-import { serve } from "@hono/node-server";
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
@@ -11,36 +10,36 @@ app.use("/*", cors());
  * This is a sample route that uses the Hono RPC client
  * @see https://hono.dev/docs/concepts/routers
  */
-const route = app.post(
-  "/posts",
-  zValidator(
-    "form",
-    z.object({
-      title: z.string(),
-      body: z.string(),
-    }),
-  ),
-  (c) => {
-    // ...
-    return c.json(
-      {
-        ok: true,
-        message: "Created!",
-      },
-      201,
-    );
-  },
-);
+const route = app
+  .post(
+    "/posts",
+    zValidator(
+      "form",
+      z.object({
+        title: z.string(),
+        body: z.string(),
+      }),
+    ),
+    (c) => {
+      // ...
+      return c.json(
+        {
+          ok: true,
+          message: "Created!",
+        },
+        201,
+      );
+    },
+  )
+  .get("/healthz", (c) => {
+    return c.json({ status: "ok" });
+  });
 
-serve(
-  {
-    fetch: app.fetch,
-    port: 3000,
-  },
-  (info) => {
-    console.info(`Server is running on http://localhost:${info.port}`);
-  },
-);
+// biome-ignore lint/style/noDefaultExport: Required by Bun
+export default {
+  fetch: app.fetch,
+  port: 3000,
+};
 
 /**
  * Required for Hono RPC client
