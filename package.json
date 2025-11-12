@@ -12,6 +12,7 @@
     "web": "pnpm --filter web",
     "ui": "pnpm --filter ui",
     "api": "pnpm --filter api",
+    "db": "pnpm --filter db",
     "check": "pnpm biome check . --write"
   },
   "keywords": [],
