@@ -5,7 +5,7 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 import { App } from "./App";
 
 import "./i18n/config";
-import "@astus/design-system/src/styles/global.css";
+import "@design-system/src/styles/global.css";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
