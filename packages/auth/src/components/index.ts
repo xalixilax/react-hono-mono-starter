@@ -1,4 +1,4 @@
-export { AuthLayout } from "./AuthLayout";
-export { AuthProviderButton } from "./AuthProviderButton";
-export { SignInForm } from "./SignInForm";
-export { SignUpForm } from "./SignUpForm";
+export { AuthLayout } from "auth-layout";
+export { AuthProviderButton } from "auth-provider-button";
+export { SignInForm } from "sign-in-form";
+export { SignUpForm } from "sign-up-form";

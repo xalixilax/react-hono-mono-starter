@@ -15,7 +15,7 @@ import * as schema from "./schema";
  */
 
 // biome-ignore lint/suspicious/noExplicitAny: I'll fix later
-export  function createAuth(db: any) {
+export function createAuth(db: any) {
   return betterAuth({
     database: drizzleAdapter(db, {
       provider: "pg",
