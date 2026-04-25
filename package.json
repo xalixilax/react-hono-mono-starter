@@ -13,7 +13,8 @@
     "ui": "pnpm --filter ui",
     "api": "pnpm --filter api",
     "db": "pnpm --filter db",
-    "check": "pnpm biome check . --write"
+    "check": "pnpm biome check . --write",
+    "ai": "pnpm check & pnpm -r lint:types"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
     "@total-typescript/tsconfig": "^1.0.4",
     "@types/bun": "^1.3.9",
     "@types/react": "19.2.14",
+    "fallow": "^2.40.3",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "typescript": "^5.9.3"

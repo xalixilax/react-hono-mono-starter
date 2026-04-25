@@ -3,7 +3,8 @@
   "type": "module",
   "scripts": {
     "dev": "bun dev",
-    "build": "bun build.ts"
+    "build": "bun build.ts",
+    "lint:types": "tsc --noEmit"
   },
   "dependencies": {
     "@hono/node-server": "^1.19.9",
