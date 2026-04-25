@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@ui/components/ui/Button";
-import { type InferRequestType, type InferResponseType, hc } from "hono/client";
+import { hc, type InferRequestType, type InferResponseType } from "hono/client";
 import { useState } from "react";
 
 /** Hono backend types */
@@ -43,6 +43,7 @@ export function App() {
       setState(res.message);
     },
     onError: (error) => {
+      // biome-ignore lint/suspicious/noConsole: Placeholder for error handling
       console.error("Did you forget to start your backend?", error);
     },
   });

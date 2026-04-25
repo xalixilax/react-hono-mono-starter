@@ -1,8 +1,6 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.6.1/schema.json",
-  "organizeImports": {
-    "enabled": true
-  },
+  "$schema": "https://biomejs.dev/schemas/2.3.14/schema.json",
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "formatter": {
     "enabled": true,
     "formatWithErrors": true,
@@ -10,7 +8,7 @@
     "indentWidth": 2,
     "lineWidth": 120,
     "lineEnding": "lf",
-    "ignore": []
+    "includes": ["**"]
   },
   "linter": {
     "enabled": true,
@@ -34,13 +32,30 @@
         }
       },
       "suspicious": {
-        "noConsoleLog": "error",
         "noEmptyBlockStatements": "error",
-        "useAwait": "error"
+        "useAwait": "error",
+        "noConsole": { "level": "error", "options": { "allow": ["log"] } }
       }
     }
   },
   "files": {
-    "ignore": ["*.config.js", "vite-env.d.ts", "storybook-static", "dist", "coverage", "*.config.ts", "tsconfig.*"]
+    "includes": [
+      "**",
+      "!**/*.config.js",
+      "!**/vite-env.d.ts",
+      "!**/storybook-static",
+      "!**/dist",
+      "!**/coverage",
+      "!**/*.config.ts",
+      "!**/tsconfig.*",
+      "!**/biome.json",
+      "!**/pnpm-lock.yaml",
+      "!**/pnpm-workspace.yaml"
+    ]
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
   }
 }

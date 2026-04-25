@@ -3,5 +3,7 @@ packages:
   - "packages/*"
   - "servers/*"
 
+minimumReleaseAge: 10080
+
 hoistPattern:
   - "*"

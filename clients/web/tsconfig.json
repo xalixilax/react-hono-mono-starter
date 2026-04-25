@@ -4,7 +4,7 @@
     "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"],
-      "@ui/*": ["../../packages/ui/src/*"],
+      "@ui/*": ["../../packages/design-system/src/*"],
       "@shared/*": ["../../packages/shared/src/*"]
     },
   }
