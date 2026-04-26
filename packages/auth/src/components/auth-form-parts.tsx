@@ -32,14 +32,7 @@ interface AuthTextFieldProps {
   value: string;
 }
 
-export function AuthFormCard({
-  children,
-  description,
-  error,
-  footer,
-  onSubmit,
-  title,
-}: AuthFormCardProps) {
+export function AuthFormCard({ children, description, error, footer, onSubmit, title }: AuthFormCardProps) {
   return (
     <Card className="w-full max-w-md border-black/10 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
       <CardHeader>

@@ -1,5 +1,12 @@
 import { Button } from "@design-system/components/ui/button";
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@design-system/components/ui/card";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@design-system/components/ui/card";
 import { AuthLayout, AuthProviderButton, SignInForm, SignUpForm } from "auth/components";
 import { languageStorageKey, resolveLanguage, type SupportedLanguage, supportedLanguages } from "i18n";
 import { startTransition, useState } from "react";

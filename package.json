@@ -21,7 +21,7 @@
     "i18n:types": "pnpm exec i18next-cli types",
     "i18n:validate": "pnpm exec i18next-cli extract --ci --dry-run --quiet && pnpm i18n:types && pnpm i18n:status && pnpm i18n:lint",
     "check": "pnpm biome check . --write",
-    "lint:types": "pnpm -r lint:types",
+    "lint:types": "pnpm -r --no-bail lint:types",
     "ai": "pnpm i18n:generate && pnpm i18n:validate && pnpm check && pnpm lint:types && pnpm exec fallow --format json --quiet --explain"
   },
   "keywords": [],
@@ -36,7 +36,7 @@
     "husky": "^9.1.7",
     "i18next-cli": "^1.54.2",
     "lint-staged": "^16.2.7",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "lint-staged": {
     "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": []
