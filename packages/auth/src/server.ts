@@ -1,5 +1,6 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
+
 import * as schema from "./schema";
 
 /**
@@ -14,7 +15,6 @@ import * as schema from "./schema";
  * ```
  */
 
-// biome-ignore lint/suspicious/noExplicitAny: I'll fix later
 export function createAuth(db: any) {
   return betterAuth({
     database: drizzleAdapter(db, {

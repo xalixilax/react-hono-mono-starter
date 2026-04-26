@@ -10,7 +10,7 @@ export function AuthLayout({ aside, children, eyebrow, title, description }: Aut
   return (
     <div className="relative isolate min-h-screen overflow-hidden bg-[linear-gradient(180deg,#f8f5ef_0%,#f4efe6_48%,#f9f7f2_100%)] px-4 py-6 sm:px-6 lg:px-8">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-32 top-10 size-72 rounded-full bg-amber-200/40 blur-3xl" />
+        <div className="absolute top-10 -left-32 size-72 rounded-full bg-amber-200/40 blur-3xl" />
         <div className="absolute -right-24 bottom-0 size-80 rounded-full bg-sky-200/40 blur-3xl" />
       </div>
 
@@ -18,7 +18,7 @@ export function AuthLayout({ aside, children, eyebrow, title, description }: Aut
         <div className="flex flex-col justify-between gap-8">
           <div className="max-w-2xl space-y-4">
             {eyebrow ? (
-              <p className="inline-flex rounded-full border border-black/10 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-black/70 backdrop-blur">
+              <p className="inline-flex rounded-full border border-black/10 bg-white/70 px-4 py-1 text-xs font-semibold tracking-[0.28em] text-black/70 uppercase backdrop-blur">
                 {eyebrow}
               </p>
             ) : null}

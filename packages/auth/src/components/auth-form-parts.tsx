@@ -1,3 +1,5 @@
+import type * as React from "react";
+
 import {
   Card,
   CardContent,
@@ -8,7 +10,6 @@ import {
 } from "@design-system/components/ui/card";
 import { Input } from "@design-system/components/ui/input";
 import { Label } from "@design-system/components/ui/label";
-import type * as React from "react";
 
 interface AuthFormCardProps {
   children: React.ReactNode;

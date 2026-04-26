@@ -21,5 +21,4 @@ const config: StorybookConfig = {
   },
 };
 
-// biome-ignore lint/style/noDefaultExport: Required by Storybook
 export default config;

@@ -1,6 +1,7 @@
-import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react-vite";
 import type { ReactElement } from "react";
+
+import { withThemeByClassName } from "@storybook/addon-themes";
 import "@design-system/styles/global.css";
 
 const preview: Preview = {
@@ -27,11 +28,10 @@ export const decorators = [
     defaultTheme: "light",
   }),
   (Story: () => ReactElement) => (
-    <div className="flex flex-col  items-center justify-center h-full p-8">
+    <div className="flex h-full  flex-col items-center justify-center p-8">
       <Story />
     </div>
   ),
 ];
 
-// biome-ignore lint/style/noDefaultExport: Required by Storybook
 export default preview;

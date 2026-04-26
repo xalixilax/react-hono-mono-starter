@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "import"],
+  "categories": {
+    "correctness": "error"
+  },
+  "options": {
+    "typeAware": true,
+    "typeCheck": true
+  },
+  "rules": {
+    "import/no-default-export": "error",
+    "typescript/no-confusing-non-null-assertion": "error",
+    "typescript/no-unsafe-type-assertion": "error",
+    "typescript/non-nullable-type-assertion-style": "error"
+  },
+  "env": {
+    "builtin": true
+  }
+}

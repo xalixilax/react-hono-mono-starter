@@ -1,10 +1,13 @@
 # Agens guidelines
+
 ## Development guidelines
+
 - you **MUST** use `pnpm` avec any command insite this repository.
 - You **SHOULD** use the package name when yo need to execute a command inside a package. (Ex.: `pnpm --filter web dev`)
 - You **MUST** run `pnpm ai` after every changes to validate your work
 
 ## Standard
+
 - File case **MUST** be `kebab-case`
 - Every files **MUST** use typescript
 - You **SHOULD** never use `as` for type assertion

@@ -6,5 +6,5 @@
       "@design-system/*": ["../../packages/design-system/src/*"]
     }
   },
-  "include": [".storybook/**/*"]
+  "include": [".storybook/**/*", "@types"]
 }

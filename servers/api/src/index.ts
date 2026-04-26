@@ -35,7 +35,6 @@ const route = app
     return c.json({ status: "ok" });
   });
 
-// biome-ignore lint/style/noDefaultExport: Required by Bun
 export default {
   fetch: app.fetch,
   port: 3000,

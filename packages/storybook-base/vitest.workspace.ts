@@ -1,11 +1,11 @@
+import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import { defineWorkspace } from "vitest/config";
 
 const dirname = typeof __dirname !== "undefined" ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
-//biome-ignore lint/style/noDefaultExport: Required by Vitest
+// oxlint-disable-next-line import/no-default-export
 export default defineWorkspace([
   "vite.config.ts",
   {

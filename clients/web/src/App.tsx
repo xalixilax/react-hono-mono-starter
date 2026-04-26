@@ -102,7 +102,7 @@ export function App() {
       aside={
         <div className="space-y-5">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-[0.24em] text-black/55">
+            <span className="text-xs font-semibold tracking-[0.24em] text-black/55 uppercase">
               {t(($) => $.LANGUAGE_LABEL)}
             </span>
             {supportedLanguages.map((language) => (
@@ -125,7 +125,7 @@ export function App() {
               <CardTitle>{t(($) => $.AUTH_PANEL_TITLE)}</CardTitle>
               <CardDescription>{t(($) => $.AUTH_PANEL_DESCRIPTION)}</CardDescription>
               <CardAction>
-                <span className="rounded-full border border-black/10 bg-black px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-white">
+                <span className="rounded-full border border-black/10 bg-black px-3 py-1 text-[10px] font-semibold tracking-[0.24em] text-white uppercase">
                   {t(($) => $.AUTH_PANEL_BADGE)}
                 </span>
               </CardAction>

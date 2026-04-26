@@ -1,5 +1,6 @@
 import { Button } from "@design-system/components/ui/button";
 import * as React from "react";
+
 import { AuthFormCard, AuthTextField } from "./auth-form-parts";
 
 interface SignUpFormCopy {
