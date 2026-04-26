@@ -1,12 +1,12 @@
 import "i18next";
 
-import type { defaultNs, resources } from "../i18n/config";
+import type { defaultNamespace, I18nResources } from "i18n";
 
 declare module "i18next" {
     interface CustomTypeOptions {
-        defaultNS: typeof defaultNs;
+        defaultNS: typeof defaultNamespace;
         enableSelector: true;
-        resources: (typeof resources)["en"];
+        resources: I18nResources;
         returnNull: false;
         strictKeyChecks: true;
     }

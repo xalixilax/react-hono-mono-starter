@@ -1,3 +1,4 @@
+import { Button } from "@ui/components/ui/button";
 import {
   Card,
   CardAction,
@@ -12,6 +13,12 @@ import {
   SignInForm,
   SignUpForm,
 } from "auth/components";
+import {
+  languageStorageKey,
+  resolveLanguage,
+  type SupportedLanguage,
+  supportedLanguages,
+} from "i18n";
 import { startTransition, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -26,11 +33,15 @@ function wait(durationMs: number) {
 }
 
 export function App() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation("web");
+  const { t: tAuth } = useTranslation("auth");
   const [mode, setMode] = useState<AuthMode>("signin");
   const [error, setError] = useState<string>();
   const [status, setStatus] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
+  const currentLanguage = resolveLanguage(
+    i18n.resolvedLanguage ?? i18n.language,
+  );
 
   const title =
     mode === "signin"
@@ -59,14 +70,14 @@ export function App() {
     await wait(650);
 
     if (email.endsWith("@example.com")) {
-      setError(t(($) => $.AUTH_ERROR_DEMO_ACCOUNT));
+      setError(tAuth(($) => $.AUTH_ERROR_DEMO_ACCOUNT));
       setIsLoading(false);
       return;
     }
 
     startTransition(() => {
       setStatus(
-        t(
+        tAuth(
           successKey === "AUTH_SUCCESS_SIGN_IN"
             ? ($) => $.AUTH_SUCCESS_SIGN_IN
             : ($) => $.AUTH_SUCCESS_SIGN_UP,
@@ -85,8 +96,8 @@ export function App() {
     await wait(450);
     startTransition(() => {
       setStatus(
-        t(($) => $.AUTH_PROVIDER_SUCCESS, {
-          provider: t(
+        tAuth(($) => $.AUTH_PROVIDER_SUCCESS, {
+          provider: tAuth(
             provider === "google"
               ? ($) => $.AUTH_PROVIDER_GOOGLE
               : ($) => $.AUTH_PROVIDER_GITHUB,
@@ -97,6 +108,21 @@ export function App() {
     });
   };
 
+  const handleLanguageChange = (nextLanguage: SupportedLanguage) => {
+    if (nextLanguage === currentLanguage) {
+      return;
+    }
+
+    window.localStorage.setItem(languageStorageKey, nextLanguage);
+    void i18n.changeLanguage(nextLanguage);
+  };
+
+  const getLanguageLabel = (language: SupportedLanguage) => {
+    return language === "en"
+      ? t(($) => $.LANGUAGE_ENGLISH)
+      : t(($) => $.LANGUAGE_FRENCH);
+  };
+
   return (
     <AuthLayout
       eyebrow={t(($) => $.AUTH_EYEBROW)}
@@ -104,6 +130,25 @@ export function App() {
       description={description}
       aside={
         <div className="space-y-5">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-xs font-semibold uppercase tracking-[0.24em] text-black/55">
+              {t(($) => $.LANGUAGE_LABEL)}
+            </span>
+            {supportedLanguages.map((language) => (
+              <Button
+                key={language}
+                type="button"
+                size="sm"
+                variant={language === currentLanguage ? "default" : "outline"}
+                onClick={() => handleLanguageChange(language)}
+                aria-pressed={language === currentLanguage}
+                className="min-w-24"
+              >
+                {getLanguageLabel(language)}
+              </Button>
+            ))}
+          </div>
+
           <Card className="border-white/50 bg-white/75 shadow-[0_30px_120px_rgba(15,23,42,0.08)] backdrop-blur">
             <CardHeader>
               <CardTitle>{t(($) => $.AUTH_PANEL_TITLE)}</CardTitle>
@@ -142,26 +187,26 @@ export function App() {
             <div className="grid gap-3 sm:grid-cols-2">
               <AuthProviderButton
                 provider="google"
-                label={t(($) => $.AUTH_PROVIDER_BUTTON, {
-                  action: t(
+                label={tAuth(($) => $.AUTH_PROVIDER_BUTTON, {
+                  action: tAuth(
                     mode === "signin"
                       ? ($) => $.AUTH_ACTION_SIGN_IN
                       : ($) => $.AUTH_ACTION_SIGN_UP,
                   ),
-                  provider: t(($) => $.AUTH_PROVIDER_GOOGLE),
+                  provider: tAuth(($) => $.AUTH_PROVIDER_GOOGLE),
                 })}
                 onSignIn={() => handleProviderClick("google")}
                 isLoading={isLoading}
               />
               <AuthProviderButton
                 provider="github"
-                label={t(($) => $.AUTH_PROVIDER_BUTTON, {
-                  action: t(
+                label={tAuth(($) => $.AUTH_PROVIDER_BUTTON, {
+                  action: tAuth(
                     mode === "signin"
                       ? ($) => $.AUTH_ACTION_SIGN_IN
                       : ($) => $.AUTH_ACTION_SIGN_UP,
                   ),
-                  provider: t(($) => $.AUTH_PROVIDER_GITHUB),
+                  provider: tAuth(($) => $.AUTH_PROVIDER_GITHUB),
                 })}
                 onSignIn={() => handleProviderClick("github")}
                 isLoading={isLoading}
@@ -184,20 +229,20 @@ export function App() {
           error={error}
           onSignUpClick={() => handleModeChange("signup")}
           onForgotPasswordClick={() =>
-            setStatus(t(($) => $.AUTH_FORGOT_PASSWORD_STATUS))
+            setStatus(tAuth(($) => $.AUTH_FORGOT_PASSWORD_STATUS))
           }
           copy={{
-            title: t(($) => $.AUTH_FORM_SIGN_IN_TITLE),
-            description: t(($) => $.AUTH_FORM_SIGN_IN_DESCRIPTION),
-            emailLabel: t(($) => $.AUTH_EMAIL_LABEL),
-            emailPlaceholder: t(($) => $.AUTH_EMAIL_PLACEHOLDER),
-            passwordLabel: t(($) => $.AUTH_PASSWORD_LABEL),
-            passwordPlaceholder: t(($) => $.AUTH_PASSWORD_PLACEHOLDER),
-            forgotPasswordLabel: t(($) => $.AUTH_FORGOT_PASSWORD_ACTION),
-            submitIdleLabel: t(($) => $.AUTH_SUBMIT_SIGN_IN_IDLE),
-            submitLoadingLabel: t(($) => $.AUTH_SUBMIT_SIGN_IN_LOADING),
-            switchPrompt: t(($) => $.AUTH_SIGN_IN_SWITCH_PROMPT),
-            switchActionLabel: t(($) => $.AUTH_SIGN_IN_SWITCH_ACTION),
+            title: tAuth(($) => $.AUTH_FORM_SIGN_IN_TITLE),
+            description: tAuth(($) => $.AUTH_FORM_SIGN_IN_DESCRIPTION),
+            emailLabel: tAuth(($) => $.AUTH_EMAIL_LABEL),
+            emailPlaceholder: tAuth(($) => $.AUTH_EMAIL_PLACEHOLDER),
+            passwordLabel: tAuth(($) => $.AUTH_PASSWORD_LABEL),
+            passwordPlaceholder: tAuth(($) => $.AUTH_PASSWORD_PLACEHOLDER),
+            forgotPasswordLabel: tAuth(($) => $.AUTH_FORGOT_PASSWORD_ACTION),
+            submitIdleLabel: tAuth(($) => $.AUTH_SUBMIT_SIGN_IN_IDLE),
+            submitLoadingLabel: tAuth(($) => $.AUTH_SUBMIT_SIGN_IN_LOADING),
+            switchPrompt: tAuth(($) => $.AUTH_SIGN_IN_SWITCH_PROMPT),
+            switchActionLabel: tAuth(($) => $.AUTH_SIGN_IN_SWITCH_ACTION),
           }}
         />
       ) : (
@@ -207,22 +252,24 @@ export function App() {
           error={error}
           onSignInClick={() => handleModeChange("signin")}
           copy={{
-            title: t(($) => $.AUTH_FORM_SIGN_UP_TITLE),
-            description: t(($) => $.AUTH_FORM_SIGN_UP_DESCRIPTION),
-            nameLabel: t(($) => $.AUTH_NAME_LABEL),
-            namePlaceholder: t(($) => $.AUTH_NAME_PLACEHOLDER),
-            emailLabel: t(($) => $.AUTH_EMAIL_LABEL),
-            emailPlaceholder: t(($) => $.AUTH_EMAIL_PLACEHOLDER),
-            passwordLabel: t(($) => $.AUTH_PASSWORD_LABEL),
-            passwordPlaceholder: t(($) => $.AUTH_PASSWORD_PLACEHOLDER),
-            confirmPasswordLabel: t(($) => $.AUTH_CONFIRM_PASSWORD_LABEL),
-            confirmPasswordPlaceholder: t(($) => $.AUTH_PASSWORD_PLACEHOLDER),
-            validationPasswordMismatch: t(($) => $.AUTH_PASSWORD_MISMATCH),
-            validationPasswordLength: t(($) => $.AUTH_PASSWORD_LENGTH),
-            submitIdleLabel: t(($) => $.AUTH_SUBMIT_SIGN_UP_IDLE),
-            submitLoadingLabel: t(($) => $.AUTH_SUBMIT_SIGN_UP_LOADING),
-            switchPrompt: t(($) => $.AUTH_SIGN_UP_SWITCH_PROMPT),
-            switchActionLabel: t(($) => $.AUTH_SIGN_UP_SWITCH_ACTION),
+            title: tAuth(($) => $.AUTH_FORM_SIGN_UP_TITLE),
+            description: tAuth(($) => $.AUTH_FORM_SIGN_UP_DESCRIPTION),
+            nameLabel: tAuth(($) => $.AUTH_NAME_LABEL),
+            namePlaceholder: tAuth(($) => $.AUTH_NAME_PLACEHOLDER),
+            emailLabel: tAuth(($) => $.AUTH_EMAIL_LABEL),
+            emailPlaceholder: tAuth(($) => $.AUTH_EMAIL_PLACEHOLDER),
+            passwordLabel: tAuth(($) => $.AUTH_PASSWORD_LABEL),
+            passwordPlaceholder: tAuth(($) => $.AUTH_PASSWORD_PLACEHOLDER),
+            confirmPasswordLabel: tAuth(($) => $.AUTH_CONFIRM_PASSWORD_LABEL),
+            confirmPasswordPlaceholder: tAuth(
+              ($) => $.AUTH_PASSWORD_PLACEHOLDER,
+            ),
+            validationPasswordMismatch: tAuth(($) => $.AUTH_PASSWORD_MISMATCH),
+            validationPasswordLength: tAuth(($) => $.AUTH_PASSWORD_LENGTH),
+            submitIdleLabel: tAuth(($) => $.AUTH_SUBMIT_SIGN_UP_IDLE),
+            submitLoadingLabel: tAuth(($) => $.AUTH_SUBMIT_SIGN_UP_LOADING),
+            switchPrompt: tAuth(($) => $.AUTH_SIGN_UP_SWITCH_PROMPT),
+            switchActionLabel: tAuth(($) => $.AUTH_SIGN_UP_SWITCH_ACTION),
           }}
         />
       )}

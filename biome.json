@@ -1,6 +1,12 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.3.14/schema.json",
-  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
   "formatter": {
     "enabled": true,
     "formatWithErrors": true,
@@ -8,7 +14,9 @@
     "indentWidth": 2,
     "lineWidth": 120,
     "lineEnding": "lf",
-    "includes": ["**"]
+    "includes": [
+      "**"
+    ]
   },
   "linter": {
     "enabled": true,
@@ -26,7 +34,10 @@
           "options": {
             "strictCase": true,
             "requireAscii": true,
-            "filenameCases": ["kebab-case", "export"]
+            "filenameCases": [
+              "kebab-case",
+              "export"
+            ]
           },
           "level": "error"
         }
@@ -34,7 +45,14 @@
       "suspicious": {
         "noEmptyBlockStatements": "error",
         "useAwait": "error",
-        "noConsole": { "level": "error", "options": { "allow": ["log"] } }
+        "noConsole": {
+          "level": "error",
+          "options": {
+            "allow": [
+              "log"
+            ]
+          }
+        }
       }
     }
   },
@@ -53,6 +71,24 @@
       "!**/pnpm-workspace.yaml"
     ]
   },
+  "overrides": [
+    {
+      "includes": [
+        "packages/i18n/src/locales/**/*.ts",
+        "packages/i18n/src/generated/**/*.d.ts"
+      ],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noBannedTypes": "off"
+          },
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    }
+  ],
   "css": {
     "parser": {
       "tailwindDirectives": true

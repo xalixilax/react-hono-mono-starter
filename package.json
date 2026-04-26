@@ -13,9 +13,16 @@
     "ui": "pnpm --filter ui",
     "api": "pnpm --filter api",
     "db": "pnpm --filter db",
+    "i18n:generate": "pnpm i18n:extract && pnpm i18n:types",
+    "i18n:extract": "pnpm exec i18next-cli extract --quiet",
+    "i18n:lint": "pnpm exec i18next-cli lint",
+    "i18n:status": "pnpm exec i18next-cli status",
+    "i18n:sync": "pnpm exec i18next-cli sync",
+    "i18n:types": "pnpm exec i18next-cli types",
+    "i18n:validate": "pnpm exec i18next-cli extract --ci --dry-run --quiet && pnpm i18n:types && pnpm i18n:status && pnpm i18n:lint",
     "check": "pnpm biome check . --write",
-    "lint:types": "pnpm exec tsc --noEmit -p clients/web/tsconfig.json && pnpm exec tsc --noEmit -p packages/auth/tsconfig.json && pnpm exec tsc --noEmit -p packages/db/tsconfig.json && pnpm exec tsc --noEmit -p packages/design-system/tsconfig.json && pnpm exec tsc --noEmit -p packages/shared/tsconfig.json && pnpm exec tsc --noEmit -p packages/storybook-base/tsconfig.json && pnpm exec tsc --noEmit -p servers/api/tsconfig.json",
-    "ai": "pnpm check && pnpm lint:types && pnpm exec fallow --format json --quiet --explain"
+    "lint:types": "pnpm exec tsc --noEmit -p clients/web/tsconfig.json && pnpm exec tsc --noEmit -p packages/auth/tsconfig.json && pnpm exec tsc --noEmit -p packages/db/tsconfig.json && pnpm exec tsc --noEmit -p packages/design-system/tsconfig.json && pnpm exec tsc --noEmit -p packages/i18n/tsconfig.json && pnpm exec tsc --noEmit -p packages/shared/tsconfig.json && pnpm exec tsc --noEmit -p packages/storybook-base/tsconfig.json && pnpm exec tsc --noEmit -p servers/api/tsconfig.json",
+    "ai": "pnpm i18n:generate && pnpm i18n:validate && pnpm check && pnpm lint:types && pnpm exec fallow --format json --quiet --explain"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +34,7 @@
     "@types/react": "19.2.14",
     "fallow": "^2.40.3",
     "husky": "^9.1.7",
+    "i18next-cli": "^1.54.2",
     "lint-staged": "^16.2.7",
     "typescript": "^5.9.3"
   },
