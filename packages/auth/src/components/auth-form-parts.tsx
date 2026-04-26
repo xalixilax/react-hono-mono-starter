@@ -1,6 +1,13 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@ui/components/ui/card";
-import { Input } from "@ui/components/ui/input";
-import { Label } from "@ui/components/ui/label";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@design-system/components/ui/card";
+import { Input } from "@design-system/components/ui/input";
+import { Label } from "@design-system/components/ui/label";
 import type * as React from "react";
 
 interface AuthFormCardProps {
@@ -25,7 +32,14 @@ interface AuthTextFieldProps {
   value: string;
 }
 
-export function AuthFormCard({ children, description, error, footer, onSubmit, title }: AuthFormCardProps) {
+export function AuthFormCard({
+  children,
+  description,
+  error,
+  footer,
+  onSubmit,
+  title,
+}: AuthFormCardProps) {
   return (
     <Card className="w-full max-w-md border-black/10 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
       <CardHeader>

@@ -1,5 +1,5 @@
-import { Button } from "@ui/components/ui/button";
-import { Label } from "@ui/components/ui/label";
+import { Button } from "@design-system/components/ui/button";
+import { Label } from "@design-system/components/ui/label";
 import * as React from "react";
 import { AuthFormCard, AuthTextField } from "./auth-form-parts";
 

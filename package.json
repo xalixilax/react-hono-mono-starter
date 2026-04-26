@@ -21,7 +21,7 @@
     "i18n:types": "pnpm exec i18next-cli types",
     "i18n:validate": "pnpm exec i18next-cli extract --ci --dry-run --quiet && pnpm i18n:types && pnpm i18n:status && pnpm i18n:lint",
     "check": "pnpm biome check . --write",
-    "lint:types": "pnpm exec tsc --noEmit -p clients/web/tsconfig.json && pnpm exec tsc --noEmit -p packages/auth/tsconfig.json && pnpm exec tsc --noEmit -p packages/db/tsconfig.json && pnpm exec tsc --noEmit -p packages/design-system/tsconfig.json && pnpm exec tsc --noEmit -p packages/i18n/tsconfig.json && pnpm exec tsc --noEmit -p packages/shared/tsconfig.json && pnpm exec tsc --noEmit -p packages/storybook-base/tsconfig.json && pnpm exec tsc --noEmit -p servers/api/tsconfig.json",
+    "lint:types": "pnpm -r lint:types",
     "ai": "pnpm i18n:generate && pnpm i18n:validate && pnpm check && pnpm lint:types && pnpm exec fallow --format json --quiet --explain"
   },
   "keywords": [],

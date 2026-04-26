@@ -1,7 +1,7 @@
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react-vite";
 import type { ReactElement } from "react";
-import "@ui/styles/global.css";
+import "@design-system/styles/global.css";
 
 const preview: Preview = {
   parameters: {

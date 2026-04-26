@@ -1,4 +1,4 @@
-import { Button } from "@ui/components/ui/button";
+import { Button } from "@design-system/components/ui/button";
 import * as React from "react";
 import { AuthFormCard, AuthTextField } from "./auth-form-parts";
 
@@ -23,13 +23,23 @@ interface SignUpFormCopy {
 
 interface SignUpFormProps {
   copy: SignUpFormCopy;
-  onSubmit: (email: string, password: string, name: string) => void | Promise<void>;
+  onSubmit: (
+    email: string,
+    password: string,
+    name: string,
+  ) => void | Promise<void>;
   isLoading?: boolean;
   error?: string;
   onSignInClick?: () => void;
 }
 
-export function SignUpForm({ copy, onSubmit, isLoading = false, error, onSignInClick }: SignUpFormProps) {
+export function SignUpForm({
+  copy,
+  onSubmit,
+  isLoading = false,
+  error,
+  onSignInClick,
+}: SignUpFormProps) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
@@ -123,7 +133,9 @@ export function SignUpForm({ copy, onSubmit, isLoading = false, error, onSignInC
           type="password"
           value={confirmPassword}
         />
-        {passwordError ? <p className="text-sm text-destructive">{passwordError}</p> : null}
+        {passwordError ? (
+          <p className="text-sm text-destructive">{passwordError}</p>
+        ) : null}
       </div>
     </AuthFormCard>
   );

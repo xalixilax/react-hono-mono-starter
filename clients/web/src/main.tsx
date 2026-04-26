@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 
 import { App } from "./app";
 import "./i18n/config";
-import "@ui/styles/global.css";
+import "@design-system/styles/global.css";
 
 const rootElement = document.getElementById("root");
 assertIsDefined(rootElement);
