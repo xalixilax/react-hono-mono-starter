@@ -11,8 +11,8 @@ export type SupportedLanguage = (typeof supportedLanguages)[number];
 export type TranslationValue =
   | string
   | {
-    readonly [key: string]: TranslationValue;
-  };
+      readonly [key: string]: TranslationValue;
+    };
 export type TranslationNamespace = Readonly<Record<string, TranslationValue>>;
 export type I18nBundle = {
   readonly [language in SupportedLanguage]: Readonly<Record<string, TranslationNamespace>>;

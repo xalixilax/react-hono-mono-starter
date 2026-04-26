@@ -1,24 +1,7 @@
 import { Button } from "@ui/components/ui/button";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@ui/components/ui/card";
-import {
-  AuthLayout,
-  AuthProviderButton,
-  SignInForm,
-  SignUpForm,
-} from "auth/components";
-import {
-  languageStorageKey,
-  resolveLanguage,
-  type SupportedLanguage,
-  supportedLanguages,
-} from "i18n";
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@ui/components/ui/card";
+import { AuthLayout, AuthProviderButton, SignInForm, SignUpForm } from "auth/components";
+import { languageStorageKey, resolveLanguage, type SupportedLanguage, supportedLanguages } from "i18n";
 import { startTransition, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -39,18 +22,10 @@ export function App() {
   const [error, setError] = useState<string>();
   const [status, setStatus] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
-  const currentLanguage = resolveLanguage(
-    i18n.resolvedLanguage ?? i18n.language,
-  );
+  const currentLanguage = resolveLanguage(i18n.resolvedLanguage ?? i18n.language);
 
-  const title =
-    mode === "signin"
-      ? t(($) => $.AUTH_TITLE_SIGN_IN)
-      : t(($) => $.AUTH_TITLE_SIGN_UP);
-  const description =
-    mode === "signin"
-      ? t(($) => $.AUTH_DESCRIPTION_SIGN_IN)
-      : t(($) => $.AUTH_DESCRIPTION_SIGN_UP);
+  const title = mode === "signin" ? t(($) => $.AUTH_TITLE_SIGN_IN) : t(($) => $.AUTH_TITLE_SIGN_UP);
+  const description = mode === "signin" ? t(($) => $.AUTH_DESCRIPTION_SIGN_IN) : t(($) => $.AUTH_DESCRIPTION_SIGN_UP);
 
   const resetFeedback = () => {
     startTransition(() => {
@@ -77,14 +52,9 @@ export function App() {
 
     startTransition(() => {
       setStatus(
-        tAuth(
-          successKey === "AUTH_SUCCESS_SIGN_IN"
-            ? ($) => $.AUTH_SUCCESS_SIGN_IN
-            : ($) => $.AUTH_SUCCESS_SIGN_UP,
-          {
-            email,
-          },
-        ),
+        tAuth(successKey === "AUTH_SUCCESS_SIGN_IN" ? ($) => $.AUTH_SUCCESS_SIGN_IN : ($) => $.AUTH_SUCCESS_SIGN_UP, {
+          email,
+        }),
       );
       setIsLoading(false);
     });
@@ -97,11 +67,7 @@ export function App() {
     startTransition(() => {
       setStatus(
         tAuth(($) => $.AUTH_PROVIDER_SUCCESS, {
-          provider: tAuth(
-            provider === "google"
-              ? ($) => $.AUTH_PROVIDER_GOOGLE
-              : ($) => $.AUTH_PROVIDER_GITHUB,
-          ),
+          provider: tAuth(provider === "google" ? ($) => $.AUTH_PROVIDER_GOOGLE : ($) => $.AUTH_PROVIDER_GITHUB),
         }),
       );
       setIsLoading(false);
@@ -118,9 +84,7 @@ export function App() {
   };
 
   const getLanguageLabel = (language: SupportedLanguage) => {
-    return language === "en"
-      ? t(($) => $.LANGUAGE_ENGLISH)
-      : t(($) => $.LANGUAGE_FRENCH);
+    return language === "en" ? t(($) => $.LANGUAGE_ENGLISH) : t(($) => $.LANGUAGE_FRENCH);
   };
 
   return (
@@ -152,9 +116,7 @@ export function App() {
           <Card className="border-white/50 bg-white/75 shadow-[0_30px_120px_rgba(15,23,42,0.08)] backdrop-blur">
             <CardHeader>
               <CardTitle>{t(($) => $.AUTH_PANEL_TITLE)}</CardTitle>
-              <CardDescription>
-                {t(($) => $.AUTH_PANEL_DESCRIPTION)}
-              </CardDescription>
+              <CardDescription>{t(($) => $.AUTH_PANEL_DESCRIPTION)}</CardDescription>
               <CardAction>
                 <span className="rounded-full border border-black/10 bg-black px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-white">
                   {t(($) => $.AUTH_PANEL_BADGE)}
@@ -163,21 +125,15 @@ export function App() {
             </CardHeader>
             <CardContent className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-3">
               <div>
-                <p className="font-semibold text-foreground">
-                  {t(($) => $.AUTH_PANEL_FEATURE_ONE_TITLE)}
-                </p>
+                <p className="font-semibold text-foreground">{t(($) => $.AUTH_PANEL_FEATURE_ONE_TITLE)}</p>
                 <p>{t(($) => $.AUTH_PANEL_FEATURE_ONE_DESCRIPTION)}</p>
               </div>
               <div>
-                <p className="font-semibold text-foreground">
-                  {t(($) => $.AUTH_PANEL_FEATURE_TWO_TITLE)}
-                </p>
+                <p className="font-semibold text-foreground">{t(($) => $.AUTH_PANEL_FEATURE_TWO_TITLE)}</p>
                 <p>{t(($) => $.AUTH_PANEL_FEATURE_TWO_DESCRIPTION)}</p>
               </div>
               <div>
-                <p className="font-semibold text-foreground">
-                  {t(($) => $.AUTH_PANEL_FEATURE_THREE_TITLE)}
-                </p>
+                <p className="font-semibold text-foreground">{t(($) => $.AUTH_PANEL_FEATURE_THREE_TITLE)}</p>
                 <p>{t(($) => $.AUTH_PANEL_FEATURE_THREE_DESCRIPTION)}</p>
               </div>
             </CardContent>
@@ -188,11 +144,7 @@ export function App() {
               <AuthProviderButton
                 provider="google"
                 label={tAuth(($) => $.AUTH_PROVIDER_BUTTON, {
-                  action: tAuth(
-                    mode === "signin"
-                      ? ($) => $.AUTH_ACTION_SIGN_IN
-                      : ($) => $.AUTH_ACTION_SIGN_UP,
-                  ),
+                  action: tAuth(mode === "signin" ? ($) => $.AUTH_ACTION_SIGN_IN : ($) => $.AUTH_ACTION_SIGN_UP),
                   provider: tAuth(($) => $.AUTH_PROVIDER_GOOGLE),
                 })}
                 onSignIn={() => handleProviderClick("google")}
@@ -201,11 +153,7 @@ export function App() {
               <AuthProviderButton
                 provider="github"
                 label={tAuth(($) => $.AUTH_PROVIDER_BUTTON, {
-                  action: tAuth(
-                    mode === "signin"
-                      ? ($) => $.AUTH_ACTION_SIGN_IN
-                      : ($) => $.AUTH_ACTION_SIGN_UP,
-                  ),
+                  action: tAuth(mode === "signin" ? ($) => $.AUTH_ACTION_SIGN_IN : ($) => $.AUTH_ACTION_SIGN_UP),
                   provider: tAuth(($) => $.AUTH_PROVIDER_GITHUB),
                 })}
                 onSignIn={() => handleProviderClick("github")}
@@ -228,9 +176,7 @@ export function App() {
           isLoading={isLoading}
           error={error}
           onSignUpClick={() => handleModeChange("signup")}
-          onForgotPasswordClick={() =>
-            setStatus(tAuth(($) => $.AUTH_FORGOT_PASSWORD_STATUS))
-          }
+          onForgotPasswordClick={() => setStatus(tAuth(($) => $.AUTH_FORGOT_PASSWORD_STATUS))}
           copy={{
             title: tAuth(($) => $.AUTH_FORM_SIGN_IN_TITLE),
             description: tAuth(($) => $.AUTH_FORM_SIGN_IN_DESCRIPTION),
@@ -261,9 +207,7 @@ export function App() {
             passwordLabel: tAuth(($) => $.AUTH_PASSWORD_LABEL),
             passwordPlaceholder: tAuth(($) => $.AUTH_PASSWORD_PLACEHOLDER),
             confirmPasswordLabel: tAuth(($) => $.AUTH_CONFIRM_PASSWORD_LABEL),
-            confirmPasswordPlaceholder: tAuth(
-              ($) => $.AUTH_PASSWORD_PLACEHOLDER,
-            ),
+            confirmPasswordPlaceholder: tAuth(($) => $.AUTH_PASSWORD_PLACEHOLDER),
             validationPasswordMismatch: tAuth(($) => $.AUTH_PASSWORD_MISMATCH),
             validationPasswordLength: tAuth(($) => $.AUTH_PASSWORD_LENGTH),
             submitIdleLabel: tAuth(($) => $.AUTH_SUBMIT_SIGN_UP_IDLE),
