@@ -1,10 +1,24 @@
 import { Button } from "@ui/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@ui/components/ui/card";
-import { Input } from "@ui/components/ui/input";
 import { Label } from "@ui/components/ui/label";
 import * as React from "react";
+import { AuthFormCard, AuthTextField } from "./auth-form-parts";
+
+interface SignInFormCopy {
+  description: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  forgotPasswordLabel?: string;
+  passwordLabel: string;
+  passwordPlaceholder: string;
+  submitIdleLabel: string;
+  submitLoadingLabel: string;
+  switchActionLabel: string;
+  switchPrompt: string;
+  title: string;
+}
 
 interface SignInFormProps {
+  copy: SignInFormCopy;
   onSubmit: (email: string, password: string) => void | Promise<void>;
   isLoading?: boolean;
   error?: string;
@@ -13,6 +27,7 @@ interface SignInFormProps {
 }
 
 export function SignInForm({
+  copy,
   onSubmit,
   isLoading = false,
   error,
@@ -28,76 +43,69 @@ export function SignInForm({
   };
 
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader>
-        <CardTitle>Sign In</CardTitle>
-        <CardDescription>Enter your credentials to access your account</CardDescription>
-      </CardHeader>
-      <form onSubmit={handleSubmit}>
-        <CardContent className="space-y-4">
-          {error && (
-            <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive border border-destructive/20">
-              {error}
-            </div>
-          )}
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="you@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              disabled={isLoading}
-              aria-invalid={!!error}
-            />
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="password">Password</Label>
-              {onForgotPasswordClick && (
-                <button
-                  type="button"
-                  onClick={onForgotPasswordClick}
-                  className="text-sm text-primary hover:underline"
-                  disabled={isLoading}
-                >
-                  Forgot password?
-                </button>
-              )}
-            </div>
-            <Input
-              id="password"
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              disabled={isLoading}
-              aria-invalid={!!error}
-            />
-          </div>
-        </CardContent>
-        <CardFooter className="flex flex-col gap-4">
+    <AuthFormCard
+      description={copy.description}
+      error={error}
+      footer={
+        <>
           <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? "Signing in..." : "Sign In"}
+            {isLoading ? copy.submitLoadingLabel : copy.submitIdleLabel}
           </Button>
-          {onSignUpClick && (
-            <p className="text-sm text-center text-muted-foreground">
-              Don't have an account?{" "}
+          {onSignUpClick ? (
+            <p className="text-center text-sm text-muted-foreground">
+              {copy.switchPrompt}{" "}
               <button
                 type="button"
                 onClick={onSignUpClick}
-                className="text-primary hover:underline font-medium"
+                className="font-medium text-primary hover:underline"
                 disabled={isLoading}
               >
-                Sign up
+                {copy.switchActionLabel}
               </button>
             </p>
-          )}
-        </CardFooter>
-      </form>
-    </Card>
+          ) : null}
+        </>
+      }
+      onSubmit={handleSubmit}
+      title={copy.title}
+    >
+      <AuthTextField
+        ariaInvalid={!!error}
+        autoComplete="email"
+        disabled={isLoading}
+        id="email"
+        label={copy.emailLabel}
+        onChange={(event) => setEmail(event.target.value)}
+        placeholder={copy.emailPlaceholder}
+        type="email"
+        value={email}
+      />
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <Label htmlFor="password">{copy.passwordLabel}</Label>
+          {onForgotPasswordClick && copy.forgotPasswordLabel ? (
+            <button
+              type="button"
+              onClick={onForgotPasswordClick}
+              className="text-sm text-primary hover:underline"
+              disabled={isLoading}
+            >
+              {copy.forgotPasswordLabel}
+            </button>
+          ) : null}
+        </div>
+        <AuthTextField
+          ariaInvalid={!!error}
+          autoComplete="current-password"
+          disabled={isLoading}
+          id="password"
+          label=""
+          onChange={(event) => setPassword(event.target.value)}
+          placeholder={copy.passwordPlaceholder}
+          type="password"
+          value={password}
+        />
+      </div>
+    </AuthFormCard>
   );
 }

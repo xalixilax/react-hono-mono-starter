@@ -1,5 +1,6 @@
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react-vite";
+import type { ReactElement } from "react";
 import "@ui/styles/global.css";
 
 const preview: Preview = {
@@ -25,7 +26,7 @@ export const decorators = [
     },
     defaultTheme: "light",
   }),
-  (Story) => (
+  (Story: () => ReactElement) => (
     <div className="flex flex-col  items-center justify-center h-full p-8">
       <Story />
     </div>

@@ -1,0 +1,51 @@
+{
+  "schema_version": 4,
+  "version": "2.40.3",
+  "elapsed_ms": 6,
+  "clone_groups": [],
+  "clone_families": [],
+  "stats": {
+    "total_files": 22,
+    "files_with_clones": 0,
+    "total_lines": 1201,
+    "duplicated_lines": 0,
+    "total_tokens": 4812,
+    "duplicated_tokens": 0,
+    "clone_groups": 0,
+    "clone_instances": 0,
+    "duplication_percentage": 0.0
+  },
+  "_meta": {
+    "docs": "https://docs.fallow.tools/cli/dupes",
+    "metrics": {
+      "duplication_percentage": {
+        "name": "Duplication Percentage",
+        "description": "Fraction of total source tokens that appear in at least one clone group. Computed over the full analyzed file set.",
+        "range": "[0, 100]",
+        "interpretation": "lower is better"
+      },
+      "token_count": {
+        "name": "Token Count",
+        "description": "Number of normalized source tokens in the clone group. Tokens are language-aware (keywords, identifiers, operators, punctuation). Higher token count = larger duplicate.",
+        "range": "[1, ∞)",
+        "interpretation": "larger clones have higher refactoring value"
+      },
+      "line_count": {
+        "name": "Line Count",
+        "description": "Number of source lines spanned by the clone instance. Approximation of clone size for human readability.",
+        "range": "[1, ∞)",
+        "interpretation": "larger clones are more impactful to deduplicate"
+      },
+      "clone_groups": {
+        "name": "Clone Groups",
+        "description": "A set of code fragments with identical or near-identical normalized token sequences. Each group has 2+ instances across different locations.",
+        "interpretation": "each group is a single refactoring opportunity"
+      },
+      "clone_families": {
+        "name": "Clone Families",
+        "description": "Groups of clone groups that share the same set of files. Indicates systematic duplication patterns (e.g., mirrored directory structures).",
+        "interpretation": "families suggest extract-module refactoring opportunities"
+      }
+    }
+  }
+}

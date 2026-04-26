@@ -4,14 +4,11 @@
   "scripts": {
     "dev": "bun dev",
     "build": "bun build.ts",
-    "lint:types": "tsc --noEmit"
+    "lint:types": "pnpm exec tsc --noEmit"
   },
   "dependencies": {
-    "@hono/node-server": "^1.19.9",
     "@hono/zod-validator": "^0.7.6",
-    "@types/react": "19.2.14",
     "hono": "^4.11.9",
-    "react": "19.2.4",
     "zod": "^4.3.6"
   },
   "devDependencies": {

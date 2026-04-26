@@ -14,7 +14,8 @@
     "api": "pnpm --filter api",
     "db": "pnpm --filter db",
     "check": "pnpm biome check . --write",
-    "ai": "pnpm check & pnpm -r lint:types"
+    "lint:types": "pnpm exec tsc --noEmit -p clients/web/tsconfig.json && pnpm exec tsc --noEmit -p packages/auth/tsconfig.json && pnpm exec tsc --noEmit -p packages/db/tsconfig.json && pnpm exec tsc --noEmit -p packages/design-system/tsconfig.json && pnpm exec tsc --noEmit -p packages/shared/tsconfig.json && pnpm exec tsc --noEmit -p packages/storybook-base/tsconfig.json && pnpm exec tsc --noEmit -p servers/api/tsconfig.json",
+    "ai": "pnpm check && pnpm lint:types && pnpm exec fallow --format json --quiet --explain"
   },
   "keywords": [],
   "author": "",

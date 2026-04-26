@@ -1,16 +1,15 @@
+import { assertIsDefined } from "@shared/lib/utils";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { App } from "app";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 
+import { App } from "./app";
 import "./i18n/config";
-import "@design-system/src/styles/global.css";
+import "@ui/styles/global.css";
 
 const rootElement = document.getElementById("root");
-if (!rootElement) {
-  throw new Error("Failed to find the root element");
-}
+assertIsDefined(rootElement);
 
 /**
  * react-query client for the app. Used to interact with the cache
@@ -25,13 +24,7 @@ const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
-    children: [
-      { index: true, element: <App /> },
-      {
-        path: "example",
-        element: <h1>Example Page</h1>,
-      },
-    ],
+    children: [{ index: true, element: <App /> }],
   },
 ]);
 
