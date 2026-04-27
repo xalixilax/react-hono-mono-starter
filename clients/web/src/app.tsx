@@ -33,6 +33,40 @@ export function App() {
 
   const title = mode === "signin" ? t(($) => $.AUTH_TITLE_SIGN_IN) : t(($) => $.AUTH_TITLE_SIGN_UP);
   const description = mode === "signin" ? t(($) => $.AUTH_DESCRIPTION_SIGN_IN) : t(($) => $.AUTH_DESCRIPTION_SIGN_UP);
+  const authActionLabel = mode === "signin" ? tAuth(($) => $.AUTH_ACTION_SIGN_IN) : tAuth(($) => $.AUTH_ACTION_SIGN_UP);
+  const googleProviderLabel = tAuth(($) => $.AUTH_PROVIDER_GOOGLE);
+  const githubProviderLabel = tAuth(($) => $.AUTH_PROVIDER_GITHUB);
+  const sharedAuthFieldCopy = {
+    emailLabel: tAuth(($) => $.AUTH_EMAIL_LABEL),
+    emailPlaceholder: tAuth(($) => $.AUTH_EMAIL_PLACEHOLDER),
+    passwordLabel: tAuth(($) => $.AUTH_PASSWORD_LABEL),
+    passwordPlaceholder: tAuth(($) => $.AUTH_PASSWORD_PLACEHOLDER),
+  };
+  const signInCopy = {
+    title: tAuth(($) => $.AUTH_FORM_SIGN_IN_TITLE),
+    description: tAuth(($) => $.AUTH_FORM_SIGN_IN_DESCRIPTION),
+    ...sharedAuthFieldCopy,
+    forgotPasswordLabel: tAuth(($) => $.AUTH_FORGOT_PASSWORD_ACTION),
+    submitIdleLabel: tAuth(($) => $.AUTH_SUBMIT_SIGN_IN_IDLE),
+    submitLoadingLabel: tAuth(($) => $.AUTH_SUBMIT_SIGN_IN_LOADING),
+    switchPrompt: tAuth(($) => $.AUTH_SIGN_IN_SWITCH_PROMPT),
+    switchActionLabel: tAuth(($) => $.AUTH_SIGN_IN_SWITCH_ACTION),
+  };
+  const signUpCopy = {
+    title: tAuth(($) => $.AUTH_FORM_SIGN_UP_TITLE),
+    description: tAuth(($) => $.AUTH_FORM_SIGN_UP_DESCRIPTION),
+    nameLabel: tAuth(($) => $.AUTH_NAME_LABEL),
+    namePlaceholder: tAuth(($) => $.AUTH_NAME_PLACEHOLDER),
+    ...sharedAuthFieldCopy,
+    confirmPasswordLabel: tAuth(($) => $.AUTH_CONFIRM_PASSWORD_LABEL),
+    confirmPasswordPlaceholder: tAuth(($) => $.AUTH_PASSWORD_PLACEHOLDER),
+    validationPasswordMismatch: tAuth(($) => $.AUTH_PASSWORD_MISMATCH),
+    validationPasswordLength: tAuth(($) => $.AUTH_PASSWORD_LENGTH),
+    submitIdleLabel: tAuth(($) => $.AUTH_SUBMIT_SIGN_UP_IDLE),
+    submitLoadingLabel: tAuth(($) => $.AUTH_SUBMIT_SIGN_UP_LOADING),
+    switchPrompt: tAuth(($) => $.AUTH_SIGN_UP_SWITCH_PROMPT),
+    switchActionLabel: tAuth(($) => $.AUTH_SIGN_UP_SWITCH_ACTION),
+  };
 
   const resetFeedback = () => {
     startTransition(() => {
@@ -151,8 +185,8 @@ export function App() {
               <AuthProviderButton
                 provider="google"
                 label={tAuth(($) => $.AUTH_PROVIDER_BUTTON, {
-                  action: tAuth(mode === "signin" ? ($) => $.AUTH_ACTION_SIGN_IN : ($) => $.AUTH_ACTION_SIGN_UP),
-                  provider: tAuth(($) => $.AUTH_PROVIDER_GOOGLE),
+                  action: authActionLabel,
+                  provider: googleProviderLabel,
                 })}
                 onSignIn={() => handleProviderClick("google")}
                 isLoading={isLoading}
@@ -160,8 +194,8 @@ export function App() {
               <AuthProviderButton
                 provider="github"
                 label={tAuth(($) => $.AUTH_PROVIDER_BUTTON, {
-                  action: tAuth(mode === "signin" ? ($) => $.AUTH_ACTION_SIGN_IN : ($) => $.AUTH_ACTION_SIGN_UP),
-                  provider: tAuth(($) => $.AUTH_PROVIDER_GITHUB),
+                  action: authActionLabel,
+                  provider: githubProviderLabel,
                 })}
                 onSignIn={() => handleProviderClick("github")}
                 isLoading={isLoading}
@@ -184,19 +218,7 @@ export function App() {
           error={error}
           onSignUpClick={() => handleModeChange("signup")}
           onForgotPasswordClick={() => setStatus(tAuth(($) => $.AUTH_FORGOT_PASSWORD_STATUS))}
-          copy={{
-            title: tAuth(($) => $.AUTH_FORM_SIGN_IN_TITLE),
-            description: tAuth(($) => $.AUTH_FORM_SIGN_IN_DESCRIPTION),
-            emailLabel: tAuth(($) => $.AUTH_EMAIL_LABEL),
-            emailPlaceholder: tAuth(($) => $.AUTH_EMAIL_PLACEHOLDER),
-            passwordLabel: tAuth(($) => $.AUTH_PASSWORD_LABEL),
-            passwordPlaceholder: tAuth(($) => $.AUTH_PASSWORD_PLACEHOLDER),
-            forgotPasswordLabel: tAuth(($) => $.AUTH_FORGOT_PASSWORD_ACTION),
-            submitIdleLabel: tAuth(($) => $.AUTH_SUBMIT_SIGN_IN_IDLE),
-            submitLoadingLabel: tAuth(($) => $.AUTH_SUBMIT_SIGN_IN_LOADING),
-            switchPrompt: tAuth(($) => $.AUTH_SIGN_IN_SWITCH_PROMPT),
-            switchActionLabel: tAuth(($) => $.AUTH_SIGN_IN_SWITCH_ACTION),
-          }}
+          copy={signInCopy}
         />
       ) : (
         <SignUpForm
@@ -204,24 +226,7 @@ export function App() {
           isLoading={isLoading}
           error={error}
           onSignInClick={() => handleModeChange("signin")}
-          copy={{
-            title: tAuth(($) => $.AUTH_FORM_SIGN_UP_TITLE),
-            description: tAuth(($) => $.AUTH_FORM_SIGN_UP_DESCRIPTION),
-            nameLabel: tAuth(($) => $.AUTH_NAME_LABEL),
-            namePlaceholder: tAuth(($) => $.AUTH_NAME_PLACEHOLDER),
-            emailLabel: tAuth(($) => $.AUTH_EMAIL_LABEL),
-            emailPlaceholder: tAuth(($) => $.AUTH_EMAIL_PLACEHOLDER),
-            passwordLabel: tAuth(($) => $.AUTH_PASSWORD_LABEL),
-            passwordPlaceholder: tAuth(($) => $.AUTH_PASSWORD_PLACEHOLDER),
-            confirmPasswordLabel: tAuth(($) => $.AUTH_CONFIRM_PASSWORD_LABEL),
-            confirmPasswordPlaceholder: tAuth(($) => $.AUTH_PASSWORD_PLACEHOLDER),
-            validationPasswordMismatch: tAuth(($) => $.AUTH_PASSWORD_MISMATCH),
-            validationPasswordLength: tAuth(($) => $.AUTH_PASSWORD_LENGTH),
-            submitIdleLabel: tAuth(($) => $.AUTH_SUBMIT_SIGN_UP_IDLE),
-            submitLoadingLabel: tAuth(($) => $.AUTH_SUBMIT_SIGN_UP_LOADING),
-            switchPrompt: tAuth(($) => $.AUTH_SIGN_UP_SWITCH_PROMPT),
-            switchActionLabel: tAuth(($) => $.AUTH_SIGN_UP_SWITCH_ACTION),
-          }}
+          copy={signUpCopy}
         />
       )}
     </AuthLayout>
