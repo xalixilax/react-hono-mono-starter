@@ -1,21 +1,21 @@
 {
   "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
-  "entry": [
-    "servers/api/build.ts",
-    "packages/storybook-base/.storybook/main.ts",
-    "packages/storybook-base/.storybook/preview.tsx",
-    "packages/storybook-base/.storybook/manager.ts",
-    "packages/storybook-base/.storybook/vitest.setup.ts",
-    "packages/storybook-base/vite.config.ts"
+  "entry": ["servers/api/build.ts"],
+  "publicPackages": ["design-system"],
+  "overrides": [
+    {
+      "files": ["packages/design-system/src/**/*.{ts,tsx}"],
+      "rules": {
+        "unused-files": "off"
+      }
+    }
   ],
-  "ignorePatterns": ["packages/shared/src/types/poke-api.d.ts"],
-  "publicPackages": ["ui"],
+  "ignorePatterns": ["packages/shared/src/@types/poke-api.d.ts"],
   "ignoreDependencies": [
     "@chromatic-com/storybook",
     "@storybook/addon-docs",
     "@storybook/addon-onboarding",
-    "@tailwindcss/vite",
-    "lucide-react",
+    "@total-typescript/tsconfig",
     "storybook-addon-pseudo-states"
   ]
 }

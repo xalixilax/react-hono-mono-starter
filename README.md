@@ -98,6 +98,12 @@ pnpm --filter web build
 
 ---
 
+## Recommended tools
+
+- [Agent Broser](https://github.com/vercel-labs/agent-browser) Browser automation CLI for AI agents
+- [Chrome Devtool MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) Let your coding agent control and inspect a live Chrome browser.
+- [Dex](https://dex.rip/)Task tracking for Agents
+
 ## 🔗 Resources
 
 - [Hono Documentation](https://hono.dev/)

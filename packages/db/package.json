@@ -10,7 +10,6 @@
   },
   "scripts": {
     "db:generate": "drizzle-kit generate",
-    "lint:types": "pnpm exec tsc --noEmit",
     "db:migrate": "tsx src/migrate.ts",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio"

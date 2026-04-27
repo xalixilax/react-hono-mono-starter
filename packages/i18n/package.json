@@ -8,8 +8,5 @@
     ".": "./src/index.ts",
     "./auth": "./src/bundles/auth.ts",
     "./web": "./src/bundles/web.ts"
-  },
-  "scripts": {
-    "lint:types": "pnpm exec tsc --noEmit"
   }
 }

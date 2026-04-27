@@ -1,12 +1,11 @@
 {
-  "name": "storybook-doc",
+  "name": "storybook-base",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint:types": "pnpm exec tsc --noEmit",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -28,6 +27,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.4",
     "@vitest/browser": "^4.0.18",
+    "@vitest/browser-playwright": "^4.1.4",
     "@vitest/coverage-v8": "^4.0.18",
     "playwright": "^1.58.2",
     "storybook": "10.2.8",

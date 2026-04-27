@@ -35,6 +35,7 @@ const route = app
     return c.json({ status: "ok" });
   });
 
+// oxlint-disable-next-line import/no-default-export
 export default {
   fetch: app.fetch,
   port: 3000,

@@ -38,8 +38,8 @@ export function createAuth(db: any) {
       //   clientSecret: process.env.GITHUB_CLIENT_SECRET!,
       // },
     },
-    secret: process.env.BETTER_AUTH_SECRET || "your-secret-key-change-in-production",
-    baseURL: process.env.BETTER_AUTH_URL || "http://localhost:3000",
+    secret: process.env.BETTER_AUTH_SECRET ?? "your-secret-key-change-in-production",
+    baseURL: process.env.BETTER_AUTH_URL ?? "http://localhost:3000",
   });
 }
 

@@ -8,6 +8,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "storybook": "pnpm --filter storybook-base storybook",
     "prepare": "husky",
     "web": "pnpm --filter web",
     "ui": "pnpm --filter ui",
@@ -20,12 +21,15 @@
     "i18n:sync": "pnpm exec i18next-cli sync",
     "i18n:types": "pnpm exec i18next-cli types",
     "i18n:validate": "pnpm exec i18next-cli extract --ci --dry-run --quiet && pnpm i18n:types && pnpm i18n:status && pnpm i18n:lint",
-    "lint:types": "pnpm -r --no-bail lint:types",
-    "ai": "pnpm i18n:generate && pnpm i18n:validate && pnpm lint && pnpm lint:types && pnpm exec fallow --format json --quiet --explain",
+    "lint:types": "pnpm -r exec tsgo --noEmit",
+    "ai": "pnpm i18n:generate && pnpm i18n:validate && pnpm lint:fix && pnpm lint:types && pnpm exec fallow --format json --quiet --explain && pnpm fmt",
     "lint": "pnpm oxlint",
-    "lint:fix": "pnpm oxfmt --fix",
+    "lint:fix": "pnpm oxlint --fix",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check"
+  },
+  "dependencies": {
+    "@storybook/react-vite": "10.2.8"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "^1.0.4",
@@ -42,8 +46,5 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mjs,cjs}": "pnpm lint"
-  },
-  "pnpm": {
-    "node-linker": "hoisted"
   }
 }

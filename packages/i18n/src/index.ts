@@ -1,6 +1,9 @@
+import type I18nResourcesGenerated from "./generated/i18next-resources";
+
 import { authI18nBundle } from "./bundles/auth";
 import { webI18nBundle } from "./bundles/web";
 
+export type I18nResources = I18nResourcesGenerated;
 export const supportedLanguages = ["en", "fr"] as const;
 export const defaultLanguage = "en";
 export const defaultNamespace = "web";
@@ -17,10 +20,9 @@ export type TranslationNamespace = Readonly<Record<string, TranslationValue>>;
 export type I18nBundle = {
   readonly [language in SupportedLanguage]: Readonly<Record<string, TranslationNamespace>>;
 };
-export type I18nResources = import("./generated/i18next-resources").default;
 
 export function isSupportedLanguage(language: string): language is SupportedLanguage {
-  return supportedLanguages.includes(language as SupportedLanguage);
+  return supportedLanguages.some((supportedLanguage) => supportedLanguage === language);
 }
 
 export function resolveLanguage(language?: string | null): SupportedLanguage {
