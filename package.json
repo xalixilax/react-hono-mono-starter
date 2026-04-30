@@ -22,7 +22,7 @@
     "i18n:types": "pnpm exec i18next-cli types",
     "i18n:validate": "pnpm exec i18next-cli extract --ci --dry-run --quiet && pnpm i18n:types && pnpm i18n:status && pnpm i18n:lint",
     "lint:types": "pnpm -r exec tsgo --noEmit",
-    "ai": "pnpm i18n:generate && pnpm i18n:validate && pnpm lint:fix && pnpm lint:types && pnpm fallow dead-code --quiet && pnpm fallow dupes --quiet && pnpm fmt",
+    "ai": "pnpm i18n:generate && pnpm i18n:validate && pnpm lint && pnpm lint:types && pnpm fallow dead-code --quiet && pnpm fallow dupes --quiet && pnpm fmt",
     "lint": "pnpm oxlint",
     "lint:fix": "pnpm oxlint --fix",
     "fmt": "oxfmt",

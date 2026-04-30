@@ -134,53 +134,59 @@ export function App() {
       title={title}
       description={description}
       aside={
-        <div className="space-y-5">
-          <div className="flex flex-wrap items-center gap-2">
+        <div className="space-y-4 sm:space-y-5">
+          <div className="flex flex-col gap-3 rounded-[1.5rem] border border-black/10 bg-white/78 p-4 shadow-[0_16px_50px_rgba(33,24,14,0.05)] backdrop-blur sm:flex-row sm:items-center sm:justify-between">
             <span className="text-xs font-semibold tracking-[0.24em] text-black/55 uppercase">
               {t(($) => $.LANGUAGE_LABEL)}
             </span>
-            {supportedLanguages.map((language) => (
-              <Button
-                key={language}
-                type="button"
-                size="sm"
-                variant={language === currentLanguage ? "default" : "outline"}
-                onClick={() => handleLanguageChange(language)}
-                aria-pressed={language === currentLanguage}
-                className="min-w-24"
-              >
-                {getLanguageLabel(language)}
-              </Button>
-            ))}
+            <div className="flex flex-wrap items-center gap-2">
+              {supportedLanguages.map((language) => (
+                <Button
+                  key={language}
+                  type="button"
+                  size="sm"
+                  variant={language === currentLanguage ? "default" : "outline"}
+                  onClick={() => handleLanguageChange(language)}
+                  aria-pressed={language === currentLanguage}
+                  className="min-w-24 rounded-full border-black/10 bg-white px-4 text-black shadow-none hover:border-black hover:bg-black hover:text-white"
+                >
+                  {getLanguageLabel(language)}
+                </Button>
+              ))}
+            </div>
           </div>
 
-          <Card className="border-white/50 bg-white/75 shadow-[0_30px_120px_rgba(15,23,42,0.08)] backdrop-blur">
-            <CardHeader>
-              <CardTitle>{t(($) => $.AUTH_PANEL_TITLE)}</CardTitle>
-              <CardDescription>{t(($) => $.AUTH_PANEL_DESCRIPTION)}</CardDescription>
+          <Card className="overflow-hidden border-black/10 bg-[#171717] text-white shadow-[0_28px_90px_rgba(17,17,17,0.18)]">
+            <CardHeader className="gap-3 border-b border-white/10 pb-5">
+              <CardTitle className="text-3xl leading-none tracking-[-0.04em] text-white">
+                {t(($) => $.AUTH_PANEL_TITLE)}
+              </CardTitle>
+              <CardDescription className="max-w-2xl text-base leading-7 text-white/68">
+                {t(($) => $.AUTH_PANEL_DESCRIPTION)}
+              </CardDescription>
               <CardAction>
-                <span className="rounded-full border border-black/10 bg-black px-3 py-1 text-[10px] font-semibold tracking-[0.24em] text-white uppercase">
+                <span className="rounded-full border border-white/12 bg-white/10 px-3 py-1 text-[10px] font-semibold tracking-[0.24em] text-white uppercase backdrop-blur">
                   {t(($) => $.AUTH_PANEL_BADGE)}
                 </span>
               </CardAction>
             </CardHeader>
-            <CardContent className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-3">
-              <div>
-                <p className="font-semibold text-foreground">{t(($) => $.AUTH_PANEL_FEATURE_ONE_TITLE)}</p>
-                <p>{t(($) => $.AUTH_PANEL_FEATURE_ONE_DESCRIPTION)}</p>
+            <CardContent className="grid gap-3 pb-1 text-sm text-white/68 sm:grid-cols-3">
+              <div className="rounded-[1.35rem] border border-white/10 bg-white/6 p-4">
+                <p className="mb-2 text-base font-semibold text-white">{t(($) => $.AUTH_PANEL_FEATURE_ONE_TITLE)}</p>
+                <p className="leading-6">{t(($) => $.AUTH_PANEL_FEATURE_ONE_DESCRIPTION)}</p>
               </div>
-              <div>
-                <p className="font-semibold text-foreground">{t(($) => $.AUTH_PANEL_FEATURE_TWO_TITLE)}</p>
-                <p>{t(($) => $.AUTH_PANEL_FEATURE_TWO_DESCRIPTION)}</p>
+              <div className="rounded-[1.35rem] border border-white/10 bg-white/6 p-4">
+                <p className="mb-2 text-base font-semibold text-white">{t(($) => $.AUTH_PANEL_FEATURE_TWO_TITLE)}</p>
+                <p className="leading-6">{t(($) => $.AUTH_PANEL_FEATURE_TWO_DESCRIPTION)}</p>
               </div>
-              <div>
-                <p className="font-semibold text-foreground">{t(($) => $.AUTH_PANEL_FEATURE_THREE_TITLE)}</p>
-                <p>{t(($) => $.AUTH_PANEL_FEATURE_THREE_DESCRIPTION)}</p>
+              <div className="rounded-[1.35rem] border border-white/10 bg-white/6 p-4">
+                <p className="mb-2 text-base font-semibold text-white">{t(($) => $.AUTH_PANEL_FEATURE_THREE_TITLE)}</p>
+                <p className="leading-6">{t(($) => $.AUTH_PANEL_FEATURE_THREE_DESCRIPTION)}</p>
               </div>
             </CardContent>
           </Card>
 
-          <div className="space-y-3">
+          <div className="rounded-[1.5rem] border border-black/10 bg-white/78 p-4 shadow-[0_16px_50px_rgba(33,24,14,0.05)] backdrop-blur">
             <div className="grid gap-3 sm:grid-cols-2">
               <AuthProviderButton
                 provider="google"
@@ -203,7 +209,7 @@ export function App() {
             </div>
 
             {status ? (
-              <p className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+              <p className="mt-3 rounded-[1.2rem] border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm leading-6 text-emerald-700">
                 {status}
               </p>
             ) : null}

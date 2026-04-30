@@ -2,10 +2,13 @@
 @import "tw-animate-css";
 
 @source "../components";
+@source "../../../auth/src/components";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --font-body: "Avenir Next", "Helvetica Neue", sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -119,7 +122,24 @@
   * {
     @apply border-border outline-ring/50;
   }
+
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  [data-display="true"] {
+    font-family: var(--font-display);
   }
 }
