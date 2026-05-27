@@ -1,12 +1,15 @@
 packages:
-  - "clients/*"
-  - "packages/*"
-  - "servers/*"
+  - clients/*
+  - packages/*
+  - servers/*
 
-minimumReleaseAge: 10080
+catalog:
+  "@typescript/native-preview": 7.0.0-dev.20260514.1
 
 hoistPattern:
   - "*"
 
-catalog:
-  "@typescript/native-preview": ^7.0.0-dev.20260418.1
+minimumReleaseAge: 10080
+
+nodeVersion: "24.16.0"
+engineStrict: true
