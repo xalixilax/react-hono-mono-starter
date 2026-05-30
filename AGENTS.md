@@ -5,6 +5,8 @@
 - you **MUST** use `pnpm` avec any command insite this repository.
 - You **SHOULD** use the package name when yo need to execute a command inside a package. (Ex.: `pnpm --filter web dev`)
 - You **MUST** run `pnpm ai` after every changes to validate your work
+- You **MUST NOT** duplicate utility logic. When a function could reasonably be reused elsewhere, you **MUST** extract it to the shared utilities location. Before creating a new utility, you **MUST** verify that an equivalent implementation does not already exist. Reuse, extend, or refactor existing utilities whenever possible.
+- You **MUST NOT** use barrel files
 
 ## Standard
 

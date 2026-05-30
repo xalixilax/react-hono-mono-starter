@@ -1,12 +1,24 @@
 {
   "name": "shared",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "keywords": [],
   "license": "ISC",
   "author": "",
-  "main": "index.js",
+  "type": "module",
+  "exports": {
+    "./lib/utils": "./src/lib/utils.ts",
+    "./orpc/client": "./src/orpc/client.ts",
+    "./orpc/router": "./src/orpc/router.ts"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@orpc/client": "^1.9.0",
+    "@orpc/server": "^1.9.0",
+    "openapi-fetch": "^0.17.0",
+    "zod": "^4.4.3"
   }
 }

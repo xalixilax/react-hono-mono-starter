@@ -1,3 +1,6 @@
 {
-  "extends": "@total-typescript/tsconfig/bundler/no-dom/library-monorepo"
+  "extends": "@total-typescript/tsconfig/bundler/no-dom/library-monorepo",
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM", "DOM.Iterable"]
+  }
 }

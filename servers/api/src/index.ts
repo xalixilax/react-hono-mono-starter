@@ -1,49 +1,39 @@
-import { zValidator } from "@hono/zod-validator";
+import { onError } from "@orpc/server";
+import { RPCHandler } from "@orpc/server/fetch";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
-import { z } from "zod";
+import { appRouter } from "shared/orpc/router";
 
 const app = new Hono();
 app.use("/*", cors());
 
-/**
- * This is a sample route that uses the Hono RPC client
- * @see https://hono.dev/docs/concepts/routers
- */
-const route = app
-  .post(
-    "/posts",
-    zValidator(
-      "form",
-      z.object({
-        title: z.string(),
-        body: z.string(),
-      }),
-    ),
-    (c) => {
-      // ...
-      return c.json(
-        {
-          ok: true,
-          message: "Created!",
-        },
-        201,
-      );
-    },
-  )
-  .get("/healthz", (c) => {
-    return c.json({ status: "ok" });
+const handler = new RPCHandler(appRouter, {
+  interceptors: [
+    onError((error) => {
+      console.error(error);
+    }),
+  ],
+});
+
+app.use("/rpc/*", async (c, next) => {
+  const { matched, response } = await handler.handle(c.req.raw, {
+    context: {},
+    prefix: "/rpc",
   });
+
+  if (matched) {
+    return c.newResponse(response.body, response);
+  }
+
+  await next();
+});
+
+app.get("/healthz", (c) => {
+  return c.json({ status: "ok" });
+});
 
 // oxlint-disable-next-line import/no-default-export
 export default {
   fetch: app.fetch,
   port: 3000,
 };
-
-/**
- * Required for Hono RPC client
- * This is used in the client to infer the types of the request and response
- * @see https://hono.dev/docs/guides/rpc
- */
-export type AppType = typeof route;
