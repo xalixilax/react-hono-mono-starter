@@ -29,12 +29,12 @@
     "fmt:check": "oxfmt --check"
   },
   "dependencies": {
-    "@storybook/react-vite": "10.2.8"
+    "@storybook/react-vite": "10.6.0"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "^1.0.4",
     "@types/bun": "^1.4.2",
-    "@types/react": "19.2.14",
+    "@types/react": "19.3.0",
     "@typescript/native-preview": "catalog:",
     "fallow": "^3.28.0",
     "husky": "^9.1.7",

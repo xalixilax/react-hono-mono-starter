@@ -15,7 +15,7 @@
     "drizzle-orm": "^0.45.3"
   },
   "devDependencies": {
-    "@storybook/react-vite": "10.2.8",
+    "@storybook/react-vite": "10.6.0",
     "@types/node": "^25.9.8",
     "@types/react": "^19.3.0",
     "react": "^19.3.0"
