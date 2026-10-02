@@ -22,7 +22,7 @@ app.use("/rpc/*", async (c, next) => {
   });
 
   if (matched) {
-    return c.newResponse(response.body, response);
+    return response;
   }
 
   await next();
