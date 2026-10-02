@@ -16,9 +16,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@orpc/client": "^1.9.0",
-    "@orpc/server": "^1.9.0",
+    "@orpc/client": "^1.15.4",
+    "@orpc/server": "^1.15.4",
     "openapi-fetch": "^0.17.0",
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   }
 }

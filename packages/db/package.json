@@ -15,12 +15,12 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "drizzle-orm": "^0.45.2",
+    "drizzle-orm": "^0.45.3",
     "postgres": "^3.4.9"
   },
   "devDependencies": {
-    "@types/node": "^25.8.0",
-    "drizzle-kit": "^0.31.10",
-    "tsx": "^4.22.0"
+    "@types/node": "^25.9.8",
+    "drizzle-kit": "^0.31.11",
+    "tsx": "^4.23.15"
   }
 }
