@@ -1,8 +1,12 @@
-import { createFileRoute } from '@tanstack/react-router'
-export const Route = createFileRoute('/posts/')({
+import { createFileRoute } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
+
+export const Route = createFileRoute("/posts/")({
   component: PostsIndexComponent,
-})
+});
 
 function PostsIndexComponent() {
-  return <div>Select a post.</div>
+  const { t } = useTranslation("start");
+
+  return <div>{t(($) => $.POSTS_SELECT_PROMPT)}</div>;
 }

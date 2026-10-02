@@ -1,10 +1,12 @@
-import { createFileRoute } from '@tanstack/react-router'
-export const Route = createFileRoute('/_pathlessLayout/_nested-layout/route-a')(
-  {
-    component: LayoutAComponent,
-  },
-)
+import { createFileRoute } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
+
+export const Route = createFileRoute("/_pathlessLayout/_nested-layout/route-a")({
+  component: LayoutAComponent,
+});
 
 function LayoutAComponent() {
-  return <div>I'm A!</div>
+  const { t } = useTranslation("start");
+
+  return <div>{t(($) => $.ROUTE_A_LABEL)}</div>;
 }

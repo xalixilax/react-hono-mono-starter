@@ -20,16 +20,4 @@ export default {
   LANGUAGE_ENGLISH: "English",
   LANGUAGE_FRENCH: "Francais",
   LANGUAGE_LABEL: "Language",
-  ORPC_DEMO_DESCRIPTION:
-    "The web app calls the API through oRPC, and the API makes a small PokeAPI request before returning typed data.",
-  ORPC_DEMO_ERROR: "The oRPC demo could not load data from the server.",
-  ORPC_DEMO_FOOTNOTE:
-    "This response is fetched by the API server from PokeAPI, then returned to the browser through oRPC.",
-  ORPC_DEMO_HEIGHT_LABEL: "Height",
-  ORPC_DEMO_LOADING: "Loading the featured Pokemon from the API...",
-  ORPC_DEMO_NAME_LABEL: "Pokemon",
-  ORPC_DEMO_REFRESH: "Refresh",
-  ORPC_DEMO_REFRESH_LOADING: "Refreshing...",
-  ORPC_DEMO_TITLE: "First oRPC round-trip",
-  ORPC_DEMO_WEIGHT_LABEL: "Weight",
 } as const;

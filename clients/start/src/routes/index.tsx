@@ -1,12 +1,16 @@
-import { createFileRoute } from '@tanstack/react-router'
-export const Route = createFileRoute('/')({
+import { createFileRoute } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
+
+export const Route = createFileRoute("/")({
   component: Home,
-})
+});
 
 function Home() {
+  const { t } = useTranslation("start");
+
   return (
     <div className="p-2">
-      <h3>Welcome Home!!!</h3>
+      <h3>{t(($) => $.HOME_WELCOME_TITLE)}</h3>
     </div>
-  )
+  );
 }

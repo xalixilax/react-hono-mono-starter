@@ -1,1 +1,1 @@
-{"root":["./vite.config.ts","./dist/assets/index-bfw99edn.js","./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/@types/i18next.d.ts","./src/components/auth-form-panel.tsx","./src/components/auth-page-aside.tsx","./src/hooks/use-auth-page-controller.ts","./src/hooks/use-poke-api.ts","./src/i18n/config.ts","./src/utils/rpc-client.ts"],"version":"6.0.3"}
+{"root":["./vite.config.ts","./dist/assets/index-bcnppfi2.js","./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/@types/i18next.d.ts","./src/i18n/config.ts"],"version":"6.0.3"}

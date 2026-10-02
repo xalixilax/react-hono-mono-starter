@@ -1,34 +1,37 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/react-router'
+import { Link, Outlet, createFileRoute } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 
-export const Route = createFileRoute('/_pathlessLayout/_nested-layout')({
+export const Route = createFileRoute("/_pathlessLayout/_nested-layout")({
   component: PathlessLayoutComponent,
-})
+});
 
 function PathlessLayoutComponent() {
+  const { t } = useTranslation("start");
+
   return (
     <div>
-      <div>I'm a nested pathless layout</div>
+      <div>{t(($) => $.NESTED_PATHLESS_LAYOUT_LABEL)}</div>
       <div className="flex gap-2">
         <Link
           to="/route-a"
           activeProps={{
-            className: 'font-bold',
+            className: "font-bold",
           }}
         >
-          Go to route A
+          {t(($) => $.NESTED_PATHLESS_LAYOUT_GO_TO_A)}
         </Link>
         <Link
           to="/route-b"
           activeProps={{
-            className: 'font-bold',
+            className: "font-bold",
           }}
         >
-          Go to route B
+          {t(($) => $.NESTED_PATHLESS_LAYOUT_GO_TO_B)}
         </Link>
       </div>
       <div>
         <Outlet />
       </div>
     </div>
-  )
+  );
 }

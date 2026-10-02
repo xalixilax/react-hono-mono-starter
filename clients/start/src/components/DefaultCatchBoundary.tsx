@@ -1,51 +1,49 @@
-import {
-  ErrorComponent,
-  Link,
-  useLocation,
-  useRouter,
-} from '@tanstack/react-router'
-import type { ErrorComponentProps } from '@tanstack/react-router'
+import type { ErrorComponentProps } from "@tanstack/react-router";
+
+import { ErrorComponent, Link, useLocation, useRouter } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 
 export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
-  const router = useRouter()
+  const { t } = useTranslation("start");
+  const router = useRouter();
   const isRoot = useLocation({
-    select: (location) => location.pathname === '/',
-  })
+    select: (location) => location.pathname === "/",
+  });
 
-  console.error(error)
+  console.error(error);
 
   return (
-    <div className="min-w-0 flex-1 p-4 flex flex-col items-center justify-center gap-6">
+    <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-6 p-4">
       <ErrorComponent error={error} />
-      <div className="flex gap-2 items-center flex-wrap">
+      <div className="flex flex-wrap items-center gap-2">
         <button
           onClick={() => {
-            router.invalidate()
+            void router.invalidate();
           }}
-          className={`px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded-sm text-white uppercase font-extrabold`}
+          className={`rounded-sm bg-gray-600 px-2 py-1 font-extrabold text-white uppercase dark:bg-gray-700`}
         >
-          Try Again
+          {t(($) => $.ERROR_TRY_AGAIN)}
         </button>
         {isRoot ? (
           <Link
             to="/"
-            className={`px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded-sm text-white uppercase font-extrabold`}
+            className={`rounded-sm bg-gray-600 px-2 py-1 font-extrabold text-white uppercase dark:bg-gray-700`}
           >
-            Home
+            {t(($) => $.ERROR_HOME)}
           </Link>
         ) : (
           <Link
             to="/"
-            className={`px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded-sm text-white uppercase font-extrabold`}
+            className={`rounded-sm bg-gray-600 px-2 py-1 font-extrabold text-white uppercase dark:bg-gray-700`}
             onClick={(e) => {
-              e.preventDefault()
-              window.history.back()
+              e.preventDefault();
+              window.history.back();
             }}
           >
-            Go Back
+            {t(($) => $.ERROR_GO_BACK)}
           </Link>
         )}
       </div>
     </div>
-  )
+  );
 }
