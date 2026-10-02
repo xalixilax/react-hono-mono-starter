@@ -1,10 +1,10 @@
-import { appClient } from "@/utils/rpc-client";
+import { rpc } from "@/utils/rpc-client";
 import { useQuery } from "@tanstack/react-query";
 
 
 export function useFeaturedPokemon() {
-    return useQuery({
+  return useQuery({
     queryKey: ["featured-pokemon"],
-    queryFn: () => appClient.external.featuredPokemon(),
+    queryFn: () => rpc.external.featuredPokemon(),
   });
 }
