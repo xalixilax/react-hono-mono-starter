@@ -2,14 +2,13 @@ import type I18nResourcesGenerated from "./generated/i18next-resources";
 
 import { authI18nBundle } from "./bundles/auth";
 import { startI18nBundle } from "./bundles/start";
-import { webI18nBundle } from "./bundles/web";
 
 export type I18nResources = I18nResourcesGenerated;
 export const supportedLanguages = ["en", "fr"] as const;
 export const defaultLanguage = "en";
-export const defaultNamespace = "web";
+export const defaultNamespace = "start";
 export const languageStorageKey = "react-hono-mono-starter.language";
-export const defaultBundles = [webI18nBundle, authI18nBundle, startI18nBundle] as const;
+export const defaultBundles = [startI18nBundle, authI18nBundle] as const;
 
 export type SupportedLanguage = (typeof supportedLanguages)[number];
 export type TranslationValue =
@@ -86,4 +85,4 @@ export function createI18nOptions({
   } as const;
 }
 
-export { authI18nBundle, startI18nBundle, webI18nBundle };
+export { authI18nBundle, startI18nBundle };

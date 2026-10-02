@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import webEn from "../../../i18n/src/locales/en/web";
+import authEn from "../../../i18n/src/locales/en/auth";
 import { AuthLayout } from "./auth-layout";
 
 const copy = {
@@ -25,7 +25,7 @@ const meta = {
     layout: "fullscreen",
   },
   args: {
-    eyebrow: webEn.AUTH_EYEBROW,
+    eyebrow: authEn.AUTH_EYEBROW,
     title: copy.title,
     description: copy.description,
     aside: (

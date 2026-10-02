@@ -14,4 +14,4 @@ Centralized translations for the monorepo live in this package.
 2. Create a bundle in `src/bundles` for that namespace.
 3. Export the bundle from `src/index.ts` and `package.json` if it should be imported directly.
 
-The default web application namespace is `web`.
+The default client namespace is `start`.

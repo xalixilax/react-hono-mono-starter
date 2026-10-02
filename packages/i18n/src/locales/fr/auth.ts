@@ -5,13 +5,14 @@ export default {
   AUTH_EMAIL_LABEL: "E-mail",
   AUTH_EMAIL_PLACEHOLDER: "vous@studio.dev",
   AUTH_ERROR_DEMO_ACCOUNT: "Utilisez une adresse autre que @example.com pour simuler une connexion reussie.",
+  AUTH_EYEBROW: "Authentification du template",
   AUTH_FORGOT_PASSWORD_ACTION: "Mot de passe oublie ?",
   AUTH_FORGOT_PASSWORD_STATUS:
     "La recuperation du mot de passe pourra etre branchee a Better Auth une fois les identifiants backend configures.",
   AUTH_FORM_SIGN_IN_DESCRIPTION: "Saisissez un e-mail valide pour previsualiser les transitions de connexion.",
   AUTH_FORM_SIGN_IN_TITLE: "Bon retour",
   AUTH_FORM_SIGN_UP_DESCRIPTION:
-    "Cette demo utilise les composants d'auth partages avec du texte traduit depuis le client web.",
+    "Cette demo utilise les composants d'auth partages avec du texte traduit depuis le client start.",
   AUTH_FORM_SIGN_UP_TITLE: "Creez votre espace",
   AUTH_NAME_LABEL: "Nom complet",
   AUTH_NAME_PLACEHOLDER: "Avery Stone",

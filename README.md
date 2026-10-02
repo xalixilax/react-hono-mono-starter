@@ -39,7 +39,7 @@ A modern full-stack monorepo starter template built with TypeScript, React, Hono
 ```bash
 react-hono-mono-starter/
 ├── clients/
-│   └── web/           # React frontend
+│   └── start/         # TanStack Start frontend
 ├── packages/
 │   └── ui/            # Shared UI components (shadcn/ui)
 ├── servers/
@@ -72,7 +72,7 @@ pnpm install
 pnpm --filter api dev
 
 # Start the frontend application
-pnpm --filter app dev
+pnpm --filter start dev
 ```
 
 ---
@@ -93,7 +93,7 @@ pnpm test
 pnpm --filter api build
 
 # Build the frontend
-pnpm --filter web build
+pnpm --filter start build
 ```
 
 ---

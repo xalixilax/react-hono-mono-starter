@@ -10,7 +10,6 @@
   "scripts": {
     "storybook": "pnpm --filter storybook-base storybook",
     "prepare": "husky",
-    "web": "pnpm --filter web",
     "ui": "pnpm --filter ui",
     "api": "pnpm --filter api",
     "db": "pnpm --filter db",

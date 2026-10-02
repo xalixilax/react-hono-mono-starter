@@ -14,7 +14,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@design-system": path.resolve(dirname, "../../packages/design-system/src"),
-      "@": path.resolve(dirname, "../../clients/web/src"),
+      "~": path.resolve(dirname, "../../clients/start/src"),
     },
   },
   test: {

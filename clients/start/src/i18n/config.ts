@@ -14,4 +14,4 @@ function resolveInitialLanguage() {
   return resolveLanguage(window.localStorage.getItem(languageStorageKey) ?? navigator.language);
 }
 
-void i18next.use(initReactI18next).init(createI18nOptions({ defaultNS: "start", lng: resolveInitialLanguage() }));
+void i18next.use(initReactI18next).init(createI18nOptions({ lng: resolveInitialLanguage() }));

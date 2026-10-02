@@ -62,7 +62,7 @@ pnpm db db:push
 In your React application, use the auth client:
 
 ```typescript
-// clients/web/src/App.tsx
+// clients/start/src/routes/index.tsx
 import { authClient } from "auth/client";
 
 function App() {
@@ -179,7 +179,7 @@ BETTER_AUTH_URL=http://localhost:3000
 DATABASE_URL=postgres://postgres:postgres@localhost:5432/app_db
 ```
 
-### Client (clients/web/.env)
+### Client (clients/start/.env)
 
 ```env
 VITE_BETTER_AUTH_URL=http://localhost:3000

@@ -8,7 +8,7 @@ export default defineConfig({
     ignore: ["packages/i18n/**", "**/*.d.ts", "**/*.test.*", "**/*.spec.*"],
     output: "packages/i18n/src/locales/{{language}}/{{namespace}}.ts",
     outputFormat: "ts",
-    defaultNS: "web",
+    defaultNS: "start",
     primaryLanguage: "en",
     sort: true,
     indentation: 2,
@@ -20,7 +20,7 @@ export default defineConfig({
   types: {
     input: "packages/i18n/src/locales/en/**/*.ts",
     basePath: "packages/i18n/src/locales/en",
-    output: "clients/web/src/@types/i18next.d.ts",
+    output: "clients/start/src/@types/i18next.d.ts",
     resourcesFile: "packages/i18n/src/generated/i18next-resources.d.ts",
     enableSelector: true,
   },
